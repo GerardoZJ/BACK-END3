@@ -3,7 +3,6 @@ const express = require('express');
 const mysql = require('mysql2');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const path = require('path');
 
 const app = express();
 
@@ -127,13 +126,6 @@ app.get('/latest-temperature', (req, res) => {
             res.json(result[0]);
         }
     });
-});
-
-// Configuración para servir archivos estáticos
-app.use(express.static(path.join(__dirname, 'public_html')));
-
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public_html', 'index.html'));
 });
 
 // Iniciar servidor
